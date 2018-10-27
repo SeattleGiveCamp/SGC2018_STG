@@ -3,6 +3,7 @@ import { Route } from 'mobx-router';
 
 import HomeContainer from './containers/HomeContainer';
 import QRReaderContainer from './containers/QRReaderContainer';
+import CameraContainer from './containers/CameraContainer';
 
 const routes = {
 
@@ -13,8 +14,11 @@ const routes = {
 	qrreader: new Route({
 		path: '/qrreader',
 		component: <QRReaderContainer />,
+	}),
+	camera:  new Route({
+		path: '/camera',
+		component: <CameraContainer />,
 	})
-
 };
 
 export default routes;

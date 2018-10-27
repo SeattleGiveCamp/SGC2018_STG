@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import QRScanner from '../components/QRScanner';
+import Camera from 'react-camera';
 
 @observer
 class App extends React.Component<{}, {}> {
@@ -13,7 +13,6 @@ class App extends React.Component<{}, {}> {
     super(props);
     this.takePicture = this.takePicture.bind(this);
   }
-
 
   takePicture() {
     this.camera.capture()
@@ -33,8 +32,23 @@ class App extends React.Component<{}, {}> {
            STG: Awesome QR Code reader coming soon
           </p>
           <div>
-      <QRScanner width={456} height={456} completed={null}/>
+        <Camera
+          style={style.preview}
+          ref={(cam) => {
+            this.camera = cam;
+          }}
+        >
+          <div style={style.captureContainer} onClick={this.takePicture}>
+            <div style={style.captureButton} />
           </div>
+        </Camera>
+        <img
+          style={style.captureImage}
+          ref={(img) => {
+            this.img = img;
+          }}
+        />
+      </div>
           <a
             className="App-link"
             href="https://www.stgpresents.org/"

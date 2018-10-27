@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as QrReader from 'react-qr-reader';
 
 interface Props {
-	type: string;
 	width: number;
 	height: number;
 	completed: any;
@@ -13,9 +12,7 @@ class Scanner extends React.Component<Props, {}> {
 	get rectangle() {
 		const padding = 10;
 
-		return this.props.type === 'qr' ?
-			{ x: padding * 2, y: padding * 2, width: this.props.width - (padding * 4), height: this.props.height - (padding * 4) } :
-			{ x: padding, y: this.props.height / 5, width: this.props.width - (padding * 2), height: (this.props.height / 5) * 3 };
+		return { x: padding * 2, y: padding * 2, width: this.props.width - (padding * 4), height: this.props.height - (padding * 4) } ;
 	}
 
 	handleError(error) {
