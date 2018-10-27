@@ -5,12 +5,18 @@ import HomeContainer from './containers/HomeContainer';
 import QRReaderContainer from './containers/QRReaderContainer';
 import PointPageContainer from './containers/PointPageContainer';
 import CameraContainer from './containers/CameraContainer';
+import ContentPageContainer from './containers/ContentPageContainer';
 
 const routes = {
 
 	home: new Route({
 		path: '/',
 		component: <HomeContainer />,
+	}),
+
+	contentpage: new Route({
+		path: '/content/:id',
+		component: <ContentPageContainer />,
 	}),
 
 	qrreader: new Route({
