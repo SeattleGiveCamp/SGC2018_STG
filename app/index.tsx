@@ -6,20 +6,20 @@ import { useStrict } from 'mobx';
 
 import App from './App';
 import routes from './routes';
-import QrCodeStore from './stores/QrCodeStore';
+import DataStore from './stores/DataStore';
 
 useStrict(true);
 const routerStore = {
 	router: new RouterStore(),
 };
 
-const qrCodeStore = new QrCodeStore();
+const dataStore = new DataStore();
 
 const renderApp = (root: Element, AppComponent: React.ComponentClass) => {
 	ReactDOM.render((
 		<Provider
 			store={routerStore}
-			qrcode={qrCodeStore}
+			data={dataStore}
 		>
 			<AppComponent />
 		</Provider>
