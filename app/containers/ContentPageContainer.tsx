@@ -23,7 +23,7 @@ class ContentPageContainer extends React.Component<Props, {}> {
 				<p>Go to the Jimi Hendrix Statue. It looks like this. When you get there, find and scan the STG QR code.</p>
 				<p>
 					<Link
-						view={routes.home}
+						view={routes.qrreader}
 						store={this.props.store}
 					>
 						Scan QR Code
