@@ -3,7 +3,8 @@ import { observer } from 'mobx-react';
 import QRScanner from '../components/QRScanner';
 
 interface State {
-	displayQrData: string;
+  displayQrData: string;
+  redirectId: string;
 }
 
 @observer
@@ -17,7 +18,8 @@ class App extends React.Component<{}, State> {
     super(props);
 
     this.state = {
-			displayQrData: null,
+      displayQrData: null,
+      redirectId: null
 		};
   }
 
@@ -29,9 +31,16 @@ class App extends React.Component<{}, State> {
         if (retrievedQrData != null)
         {
           this.setState({ displayQrData: retrievedQrData });
+
+          //Extract the ID.
+          var indexOfID = retrievedQrData.indexOf("id=");
+          if (indexOfID >= 0)
+          {
+            var justTheID = retrievedQrData.substring(indexOfID + 3);
+            this.setState({ redirectId: justTheID});
+          }
         }
       }
-
   }
 
 
@@ -48,6 +57,9 @@ class App extends React.Component<{}, State> {
           </div>
           <div>
              {this.state.displayQrData}
+          </div>
+          <div>
+             ID: {this.state.redirectId}
           </div>
 
           <a
