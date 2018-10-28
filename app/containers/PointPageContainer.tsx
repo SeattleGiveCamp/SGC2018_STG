@@ -4,10 +4,6 @@ import { RouterStore } from 'mobx-router';
 import YouTube from 'react-youtube';
 import { Button, Modal } from 'react-bootstrap';
 
-
-
-
-
 import routes from '../routes';
 import DataStore from '../stores/DataStore';
 
@@ -58,13 +54,12 @@ class PointPageContainer extends React.Component<Props, State> {
 			});
 	}
 
-	
 	renderPoints(points: number) {
 		if (this.state.showPoints) {
 			return (
-				<div style={{backgroundColor:'#D5E0B0', width:'100%', minHeight:'100%'}}>
+				<div style={{backgroundColor: '#D5E0B0', width: '100%', minHeight: '100%'}}>
 				
-				<h5 style={{color:'#0C2325'}}>You earned {points} points!</h5>
+				<h5 style={{color: '#0C2325'}}>You earned {points} points!</h5>
 				<p>
 					<Button
 						bsStyle="primary"
@@ -79,9 +74,9 @@ class PointPageContainer extends React.Component<Props, State> {
 		} else if (this.state.alreadyDone) {
 			return (
 				
-				<div style={{backgroundColor:'#D5E0B0', width:'100%', minHeight:'100%'}}>
+				<div style={{backgroundColor: '#D5E0B0', width: '100%', minHeight: '100%'}}>
 				
-				<h5 style={{color:'#0C2325'}}>You already completed this task.</h5>
+				<h5 style={{color: '#0C2325'}}>You already completed this task.</h5>
 				<p>
 					<Button
 						bsStyle="primary"
@@ -119,22 +114,22 @@ class PointPageContainer extends React.Component<Props, State> {
 		}
 
 		return (
-			<div style={{ textAlign: 'center', backgroundColor:'#0C2325', backgroundSize:'cover', height: '100vh', width:'100vw'}}>
+			<div style={{ textAlign: 'center', backgroundColor: '#0C2325', backgroundSize: 'cover', height: '100vh', width: '100vw'}}>
 				
-				<h1 style={{color:'#D5E0B0', paddingTop:'50px'}}>{mission.MissionName}</h1>
-				<h4 style={{color:'#D5E0B0'}}>{videoTask.TaskName}</h4>
+				<h1 style={{color: '#D5E0B0', paddingTop: '50px'}}>{mission.MissionName}</h1>
+				<h4 style={{color: '#D5E0B0'}}>{videoTask.TaskName}</h4>
 				<YouTube 
 					videoId={videoTask.content_url}
 					opts={{
 						width: '100%',
 						playerVars: {
-							controls: 1,
+							controls: 0,
 							modestbranding: 1,
 						},
 					}}
 					onEnd={() => this.onVideoEnd(videoTask.TaskID)}
 				/>
-				<p style={{color:'#D5E0B0'}}>{videoTask.TaskDescription}</p>
+				<p style={{color: '#D5E0B0'}}>{videoTask.TaskDescription}</p>
 				{this.renderPoints(videoTask.Points)}
 				<br /><br />
 				
@@ -142,7 +137,5 @@ class PointPageContainer extends React.Component<Props, State> {
 		);
 	}
 }
-
-
 
 export default PointPageContainer;
