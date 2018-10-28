@@ -1,21 +1,30 @@
 import * as React from "react";
+import { observer, inject } from 'mobx-react';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { RouterStore } from 'mobx-router';
+
 import "../style.css";
+import routes from '../routes';
 import * as login_img from '../images/login.jpg';
 
+interface Props {
+  store?: RouterStore;
+}
 
-interface State{
+interface State {
   email: string;
   password: string;
 }
 
-export default class Login extends React.Component<{}, State> {
+@inject('store')
+@observer
+export default class Login extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
   }
 
@@ -33,8 +42,7 @@ export default class Login extends React.Component<{}, State> {
 
   handleSubmit = event => {
     event.preventDefault();
-    window.location.href = "/home";
-    console.log("checking");
+    this.props.store.router.goTo(routes.home);
   }
 
   render() {

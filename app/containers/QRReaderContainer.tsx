@@ -3,10 +3,6 @@ import { observer, inject } from 'mobx-react';
 import QRScanner from '../components/QRScanner';
 import { Link, RouterStore } from 'mobx-router';
 import routes from '../routes';
-import './Login.css'
-
-//import { ReactCSSTransitionGroup } from 'react-transition-group' // ES6
-//var ReactCSSTransitionGroup = require('react-transition-group'); // ES5 with npm
 
 interface State {
   displayQrData: string;
@@ -63,7 +59,6 @@ class App extends React.Component<Props, State> {
               this.props.store.router.goTo(routes.pointpage,{id:justTheID});
             }
           }
-         //this.props.store.router.goTo(routes.pointpage,{id:'abc'}); 
         } 
       }
       else //
@@ -105,16 +100,6 @@ class App extends React.Component<Props, State> {
           <div>
              ID: {this.state.redirectId}
           </div>
-          
-          {/* <ReactCSSTransitionGroup
-            transitionName="errorSection"
-            transitionAppear={true}
-            transitionAppearTimeout={500}
-            transitionEnter={false}
-            transitionLeave={false}
-            transitionLeaveTimeout={2500}>
-            <h4>{this.state.msg}</h4>
-          </ReactCSSTransitionGroup> */}
           
           {/* AUBREY FIX THIS KTHX  */}
           <span id="error" color="red" className="errorLabel">{this.state.msg}</span>
