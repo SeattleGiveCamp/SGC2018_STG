@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link, RouterStore } from 'mobx-router';
+import { RouterStore } from 'mobx-router';
 import { Button } from 'react-bootstrap';
 
 import routes from '../routes';
