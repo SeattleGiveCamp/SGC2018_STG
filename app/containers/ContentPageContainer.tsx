@@ -32,7 +32,7 @@ class ContentPageContainer extends React.Component<Props, {}> {
 			);
 		}
 
-		const textTask = mission.tasks.find(task => task.ContentType === 'txt');
+		const textTask = mission.tasks.find(task => task.ContentType === 'txt') || {};
 
 		return (
 			<div style={{ textAlign: 'center' }}>

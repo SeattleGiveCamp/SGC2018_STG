@@ -14,6 +14,8 @@ interface Props {
 
 interface State {
 	showPoints: boolean;
+	alreadyDone: boolean;
+	ended: boolean;
 }
 
 @inject('store', 'data')
@@ -24,7 +26,9 @@ class PointPageContainer extends React.Component<Props, State> {
 		super(props);
 
 		this.state = {
+			ended: false,
 			showPoints: false,
+			alreadyDone: false,
 		};
 	}
 
@@ -32,17 +36,35 @@ class PointPageContainer extends React.Component<Props, State> {
 		this.props.data.loadMissionById(this.props.store.router.params.id);
 	}
 
-	onVideoEnd = () => {
-		this.setState({ showPoints: true });
+	onVideoEnd(taskId: string) {
+		if (this.state.ended) {
+			return;
+		}
+
+		this.setState({ ended: true });
+
+		this.props.data.addPoints(6, taskId)
+			.then(response => {
+				const done = response.startsWith('Congratulations');
+
+				this.setState({
+					showPoints: done,
+					alreadyDone: !done,
+				});
+			});
 	}
 
-	renderPoints() {
+	renderPoints(points: number) {
 		if (this.state.showPoints) {
 			return (
-				<h3>You earned 5 points!</h3>
+				<h4>You earned {points} points!</h4>
+			);
+		} else if (this.state.alreadyDone) {
+			return (
+				<h4>You already completed this task.</h4>
 			);
 		} else {
-			return <h3>&nbsp;</h3>;
+			return <h4>&nbsp;</h4>;
 		}
 	}
 
@@ -61,6 +83,12 @@ class PointPageContainer extends React.Component<Props, State> {
 
 		const videoTask = mission.tasks.find(task => task.ContentType === 'vid');
 
+		if (!videoTask) {
+			return (
+				<p>No video task found</p>
+			);
+		}
+
 		return (
 			<div style={{ textAlign: 'center' }}>
 				<h1>{mission.MissionName}</h1>
@@ -70,14 +98,14 @@ class PointPageContainer extends React.Component<Props, State> {
 					opts={{
 						width: '100%',
 						playerVars: {
-							controls: 0,
+							controls: 1,
 							modestbranding: 1,
 						},
 					}}
-					onEnd={this.onVideoEnd}
+					onEnd={() => this.onVideoEnd(videoTask.TaskID)}
 				/>
 				<p>{videoTask.TaskDescription}</p>
-				{this.renderPoints()}
+				{this.renderPoints(videoTask.Points)}
 				<br /><br />
 				<p>
 					<Button
