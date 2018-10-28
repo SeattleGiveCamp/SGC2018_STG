@@ -45,6 +45,7 @@ h1 {
 }
 
 .login_img {
+  
   height: 100%;
   width: 100%;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
