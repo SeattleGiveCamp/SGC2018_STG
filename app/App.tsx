@@ -8,9 +8,6 @@ injectGlobal`
 		margin: 0;
 	}
 	
-	body {
-		padding: 16px;
-	}
 `;
 
 class App extends React.Component<{}, {}> {

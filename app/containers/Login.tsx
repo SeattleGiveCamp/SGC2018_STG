@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../style.css";
-import login_img from '../images/login.jpg';
+import * as login_img from '../images/login.jpg';
 
 
 interface State{
@@ -42,10 +42,13 @@ export default class Login extends React.Component<{}, State> {
   render() {
     return (
       <div className="Login">
-      <img src={login_img} />
-        <form onSubmit={this.handleSubmit}>
+      <div className="splash">
+        <img className="login_img" src={login_img} />
+      </div>
+      <div className="container">
+        <form className="login_form" onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
+            <ControlLabel className="label">USERNAME</ControlLabel>
             <FormControl
               autoFocus
               type="email"
@@ -54,7 +57,7 @@ export default class Login extends React.Component<{}, State> {
             />
           </FormGroup>
           <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
+            <ControlLabel>PASSWORD</ControlLabel>
             <FormControl
               value={this.state.password}
               onChange={this.handleChange}
@@ -70,6 +73,7 @@ export default class Login extends React.Component<{}, State> {
             Login
           </Button>
         </form>
+      </div>
       </div>
     );
   }

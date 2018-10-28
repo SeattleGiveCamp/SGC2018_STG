@@ -3,15 +3,38 @@ body {
 }
 
 .Login {
-  /* margin-top: 60vh; */
+  width: 100%;
+  height: 100%;
 }
 
+.splash {
+  width: 100vw;
+  height: 60vh;
+}
+
+.login_img {
+    height: 100%;
+    width: 100%;
+}
+
+.Login form {
+  margin-top: 1rem;
+}
+
+.Login, .label {
+  text-align: center;
+}
+
+input { 
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1.5px solid lightgrey;
+    border-radius: 0;}
 
 @media all and (min-width: 480px) {
-    .Login {
-      padding: 60px 0;
-    }
-  
+   
     .Login form {
       margin: 0 auto;
       max-width: 320px;
