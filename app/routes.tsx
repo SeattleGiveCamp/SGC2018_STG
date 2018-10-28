@@ -7,7 +7,7 @@ import QRReaderContainer from './containers/QRReaderContainer';
 import PointPageContainer from './containers/PointPageContainer';
 import CameraContainer from './containers/CameraContainer';
 import ContentPageContainer from './containers/ContentPageContainer';
-
+import MapContainer from './containers/MapContainer';
 const routes = {
 
 	home: new Route({
@@ -37,6 +37,11 @@ const routes = {
 	camera:  new Route({
 		path: '/camera',
 		component: <CameraContainer />,
+	}),
+
+	map:  new Route({
+		path: '/map',
+		component: <MapContainer />,
 	}),
 };
 
