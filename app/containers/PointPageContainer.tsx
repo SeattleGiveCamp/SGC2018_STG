@@ -59,11 +59,14 @@ class PointPageContainer extends React.Component<Props, State> {
 			);
 		}
 
+		const videoTask = mission.tasks.find(task => task.ContentType === 'vid');
+
 		return (
 			<div style={{ textAlign: 'center' }}>
-				<h1>{mission.TaskName}</h1>
+				<h1>{mission.MissionName}</h1>
+				<h4>{videoTask.TaskName}</h4>
 				<YouTube
-					videoId="iRNzgF9M6iY"
+					videoId={videoTask.content_url}
 					opts={{
 						width: '100%',
 						playerVars: {
@@ -73,6 +76,7 @@ class PointPageContainer extends React.Component<Props, State> {
 					}}
 					onEnd={this.onVideoEnd}
 				/>
+				<p>{videoTask.TaskDescription}</p>
 				{this.renderPoints()}
 				<br /><br />
 				<p>
