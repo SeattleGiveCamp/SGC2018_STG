@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { Link, RouterStore } from 'mobx-router';
+import { Button } from 'react-bootstrap';
 
 import routes from '../routes';
 import DataStore from '../stores/DataStore';
@@ -16,6 +17,10 @@ class ContentPageContainer extends React.Component<Props, {}> {
 
 	componentDidMount() {
 		this.props.data.loadMissionById(this.props.store.router.params.id);
+	}
+
+	onScanClick = () => {
+		this.props.store.router.goTo(routes.qrreader);
 	}
 
 	render() {
@@ -38,12 +43,10 @@ class ContentPageContainer extends React.Component<Props, {}> {
 				<p>{mission.taksDescr}</p>
 				<p>Reward: {mission.pointValue} points</p>
 				<p>
-					<Link
-						view={routes.qrreader}
-						store={this.props.store}
-					>
-						Scan QR Code
-					</Link>
+					<Button
+						bsStyle="primary"
+						onClick={this.onScanClick}
+					/>
 				</p>
 			</div>
 		);
