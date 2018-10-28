@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link, RouterStore } from 'mobx-router';
+import { RouterStore } from 'mobx-router';
 import { Button } from 'react-bootstrap';
 
 import routes from '../routes';
@@ -23,6 +23,10 @@ class ContentPageContainer extends React.Component<Props, {}> {
 		this.props.store.router.goTo(routes.qrreader);
 	}
 
+	onBackClick = () => {
+		this.props.store.router.goTo(routes.home);
+	}
+
 	render() {
 		const mission = this.props.data.currentMission;
 
@@ -32,22 +36,32 @@ class ContentPageContainer extends React.Component<Props, {}> {
 			);
 		}
 
+		const textTask = mission.tasks.find(task => task.ContentType === 'txt') || {};
+
 		return (
 			<div style={{ textAlign: 'center' }}>
-				<h1>{mission.TaskName}</h1>
-				<iframe
+				<h1>{mission.MissionName}</h1>
+				<p>Total Points: {mission.TotalPoints}</p>
+				<img
 					width='100%'
-					height='400px'
-					src={mission.content_url}
+					src={mission.img_url}
 				/>
-				<p>{mission.TaskDescription}</p>
-				<p>Reward: {mission.Points} points</p>
+				<p>{textTask.content_url}</p>
+				<h4>{textTask.TaskName}</h4>
+				<p>{textTask.TaskDescription}</p>
 				<p>
 					<Button
 						bsStyle="primary"
 						onClick={this.onScanClick}
 					>
 						Scan QR Code
+					</Button>
+					&nbsp;&nbsp;
+					<Button
+						bsStyle="primary"
+						onClick={this.onBackClick}
+					>
+						Back to Home
 					</Button>
 				</p>
 			</div>
