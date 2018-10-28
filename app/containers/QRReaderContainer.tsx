@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 import QRScanner from '../components/QRScanner';
 import { Link, RouterStore } from 'mobx-router';
 import routes from '../routes';
+import './Login.css'
 
 //import { ReactCSSTransitionGroup } from 'react-transition-group' // ES6
 //var ReactCSSTransitionGroup = require('react-transition-group'); // ES5 with npm
@@ -114,7 +115,9 @@ class App extends React.Component<Props, State> {
             transitionLeaveTimeout={2500}>
             <h4>{this.state.msg}</h4>
           </ReactCSSTransitionGroup> */}
-          <span id="error">{this.state.msg}</span>
+          
+          {/* AUBREY FIX THIS KTHX  */}
+          <span id="error" color="red" className="errorLabel">{this.state.msg}</span>
           <a
             className="App-link"
             href="https://www.stgpresents.org/"
