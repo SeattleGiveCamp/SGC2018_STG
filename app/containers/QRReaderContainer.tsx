@@ -7,6 +7,8 @@ import routes from '../routes';
 interface State {
   displayQrData: string;
   redirectId: string;
+  fading: boolean;
+  msg: string;
 }
 interface Props {
 	store?: RouterStore;
@@ -19,13 +21,16 @@ class App extends React.Component<Props, State> {
     private camera;
     private img;
     private src;
+    private timer;
     
   constructor(props) {
     super(props);
 
     this.state = {
       displayQrData: null,
-      redirectId: null
+      redirectId: null,
+      fading: false,
+      msg: null
 		};
   }
 
@@ -38,26 +43,47 @@ class App extends React.Component<Props, State> {
         {
           this.setState({ displayQrData: retrievedQrData });
 
+          if (retrievedQrData.indexOf("stgpresents.org") < 0)
+          {
+            this.showError("Sorry, this isn't an STG code.");
+            return;
+          }
+
           //Extract the ID.
-          var indexOfID = retrievedQrData.indexOf("id=");
+          var queryStringParameterName = "appcontent=";
+          var indexOfID = retrievedQrData.indexOf(queryStringParameterName);
           if (indexOfID >= 0)
           {
-            var justTheID = retrievedQrData.substring(indexOfID + 3);
-            this.setState({ redirectId: justTheID});
+            var justTheID = retrievedQrData.substring(indexOfID + (queryStringParameterName.length));
             if(justTheID != null){
               this.props.store.router.goTo(routes.pointpage,{id:justTheID});
             }
           }
-         //this.props.store.router.goTo(routes.pointpage,{id:'abc'});
-          
-        }
+        } 
+      }
+      else //
+      {
+        
       }
     
 
   }
 
+ showError(message) {
+    // // in some handler code
+    // this.setState({fading: true}); // fade out
+    // this.timer = setTimeout(_ => {
+    //   this.setState({msg: message}); // swap the text
+    //   this.setState({fading: false, msg: ""}); // fade back in
+    // }, 3000); // animation timing offset
+
+    this.setState({msg: message});
+ }
 
   render() {
+
+    const {msg, fading} = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -65,26 +91,28 @@ class App extends React.Component<Props, State> {
           <h1>
            STG - Scan your QR Code
           </h1>
-          <div>
-            <QRScanner width={456} height={456} completed={this.readQR.bind(this)}/>
-          </div>
-          <div>
+          
+          <div className="wrap">
+            <QRScanner width={300} height={300} completed={this.readQR.bind(this)}/>
+          {/* <div>
              {this.state.displayQrData}
           </div>
           <div>
              ID: {this.state.redirectId}
+          </div> */}
+          
+          {/* AUBREY FIX THIS KTHX  */}
+          <span id="error" color="red" className="errorLabel">{this.state.msg}</span>
+       
+          <div className="instructions">
+              <div>Locate nearby STG poster</div>
+              <div>Place inside the QR code inside area</div>
           </div>
 
-          <a
-            className="App-link"
-            href="https://www.stgpresents.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            STG
-          </a>
-        </header>
-      </div>
+        </div>
+      </header>
+     </div>
+     
     );
   }
 
