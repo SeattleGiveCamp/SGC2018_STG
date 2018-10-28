@@ -23,6 +23,10 @@ class ContentPageContainer extends React.Component<Props, {}> {
 		this.props.store.router.goTo(routes.qrreader);
 	}
 
+	onBackClick = () => {
+		this.props.store.router.goTo(routes.home);
+	}
+
 	render() {
 		const mission = this.props.data.currentMission;
 
@@ -51,6 +55,13 @@ class ContentPageContainer extends React.Component<Props, {}> {
 						onClick={this.onScanClick}
 					>
 						Scan QR Code
+					</Button>
+					&nbsp;&nbsp;
+					<Button
+						bsStyle="primary"
+						onClick={this.onBackClick}
+					>
+						Back to Home
 					</Button>
 				</p>
 			</div>
