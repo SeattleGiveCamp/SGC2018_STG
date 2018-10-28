@@ -28,12 +28,13 @@ class HomeContainer extends React.Component<Props, {}> {
 
 	componentDidMount() {
 		this.props.data.loadMissions();
+		this.props.data.getUserPoints("audrey");
 	}
 
 
 	render() {
 		const missions = this.props.data.missions;
-
+		const points = this.props.data.points;
 		const missionMap = missions.map(mission => (
 					<div className="col-xs-2" key={mission.MissionID}>
 						
@@ -47,7 +48,7 @@ class HomeContainer extends React.Component<Props, {}> {
 			<div>
 				<h1>STG Scavenger Hunt Game Goes Here</h1>
 
-				<h3>Total Points: </h3><h3></h3>
+				<h3>Total Points: </h3><h3>{points}</h3>
 				 
 				<div className="container-fluid bg-3 text-center"> 
   					
