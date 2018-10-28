@@ -3,6 +3,10 @@ import * as ReactDOM from 'react-dom';
 import { RouterStore, startRouter } from 'mobx-router';
 import { Provider } from 'mobx-react';
 import { useStrict } from 'mobx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import App from './App';
 import routes from './routes';
