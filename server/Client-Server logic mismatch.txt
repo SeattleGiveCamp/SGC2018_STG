@@ -1,0 +1,8 @@
+There's a big mismatch in how the client treats missions vs how the server treats missions. At some point I accidentally
+reverted back to an old version of the database(which is the one currently included in this folder), and before I
+realised what had happened the people writing the client code had already written around it, while the API was written
+around the new version of the database. As a result, the client views a mission as two tasks related to the same content,
+with the screen introducing the content being one task and the screen after the QR code is scanned as another, with
+points being the basis of rewards. The server views missions as being collections of an unknown number of tasks with no
+overlap in content between the tasks. Missions, once completed, are the basis of rewards. The info in task1 would go
+into taskImgURL and taskDescr fields, and the info in task2 would go into contentURL and contentDescr fields.

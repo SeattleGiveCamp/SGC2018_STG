@@ -16,12 +16,11 @@ class App extends React.Component<{}, {}> {
 
   takePicture() {
     this.camera.capture()
-    .then(blob => {
-      this.img.src = URL.createObjectURL(blob);
-      this.img.onload = () => { URL.revokeObjectURL(this.src); }
-    })
+      .then(blob => {
+        this.img.src = URL.createObjectURL(blob);
+        this.img.onload = () => { URL.revokeObjectURL(this.src); };
+      });
   }
-
 
   render() {
     return (
@@ -66,8 +65,6 @@ class App extends React.Component<{}, {}> {
       </div>
     );
   }
-
-  
 }
 
 const style = {
@@ -76,11 +73,10 @@ const style = {
   },
   captureContainer: {
     display: 'flex',
-    //position: 'absolute',
     justifyContent: 'center',
     zIndex: 1,
     bottom: 0,
-    width: '100%'
+    width: '100%',
   },
   captureButton: {
     backgroundColor: '#fff',
@@ -88,11 +84,11 @@ const style = {
     height: 56,
     width: 56,
     color: '#000',
-    margin: 20
+    margin: 20,
   },
   captureImage: {
     width: '100%',
-  }
+  },
 };
 
 export default App;
