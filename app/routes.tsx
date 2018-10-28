@@ -37,8 +37,8 @@ const routes = {
 	camera:  new Route({
 		path: '/camera',
 		component: <CameraContainer />,
-	})
-	
+	}),
+
 };
 
 export default routes;
