@@ -1,0 +1,107 @@
+@media all and (min-width: 300px) {
+    /*
+    navbar 
+    wrap
+    overlay the logo and circl z index
+    */
+    /*Ar landmark*/
+    /*
+    .Login {
+      padding: 60px 0;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+    }*/
+    body{
+        background:rgb(255, 255, 204);
+    }
+    #imgMission img{
+        
+        height:90%;
+        width:375px;
+    }
+    #headline{
+        /*position: absolute;*/
+        /*top:80px;*/
+
+        height: 200px;
+        width: 428px;
+        background:#006666;
+    }
+    
+    h1{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    
+    nav{
+        background:#006666;
+        /*height: 130px;*/
+        width:428px;
+        /*z-index:4*/
+        
+    }
+    #circleTemp img{
+        
+        height:100px;
+        position:absolute;
+        bottom:180px;
+        left:250px;
+        z-index : 3;
+        
+        
+
+    }
+    /*rectangel div*/
+    #summaryBox{
+        background:rgb(255, 255, 204);
+        height: 250px;
+        position:absolute;
+        top:600px;
+        width:428px;
+    }
+    #summaryBox p{
+        position:absolute;
+        top:50px;
+        text-align:center;
+    }
+    /*
+    .image:after{
+        background:rgba(0,0,0,0.6);
+        opacity:0;
+        
+    }
+    .image:hover:after {
+        opacity:1;
+    }*/
+
+    /*added stuff from code pen*/
+    header {
+        position: relative;
+        height: 300px;
+        background-image: linear-gradient(#ff9d2f, #ff6126);
+      }
+      
+      h1 {
+        padding: 100px 0;
+        font: 44px "Arial";
+        text-align: center;
+      }
+      
+      header h1 {
+        color: white;
+      }
+      
+      svg {
+        position: absolute;
+        top:550px;
+      
+        width: 100%;
+        height: 100px;
+        /* set height to pixels if you want angle to change with screen width */
+      }
+}
