@@ -1,25 +1,46 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import Camera from 'react-camera';
+import QRScanner from '../components/QRScanner';
+
+interface State {
+  displayQrData: string;
+  redirectId: string;
+}
 
 @observer
-class App extends React.Component<{}, {}> {
+class App extends React.Component<{}, State> {
 
     private camera;
     private img;
     private src;
-
+    
   constructor(props) {
     super(props);
-    this.takePicture = this.takePicture.bind(this);
+
+    this.state = {
+      displayQrData: null,
+      redirectId: null
+		};
   }
 
-  takePicture() {
-    this.camera.capture()
-    .then(blob => {
-      this.img.src = URL.createObjectURL(blob);
-      this.img.onload = () => { URL.revokeObjectURL(this.src); }
-    })
+  readQR(retrievedQrData) {
+    //console.log(retrievedQrData);
+    
+      if (this.state.displayQrData == null || this.state.displayQrData != retrievedQrData)
+      {
+        if (retrievedQrData != null)
+        {
+          this.setState({ displayQrData: retrievedQrData });
+
+          //Extract the ID.
+          var indexOfID = retrievedQrData.indexOf("id=");
+          if (indexOfID >= 0)
+          {
+            var justTheID = retrievedQrData.substring(indexOfID + 3);
+            this.setState({ redirectId: justTheID});
+          }
+        }
+      }
   }
 
 
@@ -28,27 +49,19 @@ class App extends React.Component<{}, {}> {
       <div className="App">
         <header className="App-header">
          
-          <p>
-           STG: Awesome QR Code reader coming soon
-          </p>
+          <h1>
+           STG - Scan your QR Code
+          </h1>
           <div>
-        <Camera
-          style={style.preview}
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-        >
-          <div style={style.captureContainer} onClick={this.takePicture}>
-            <div style={style.captureButton} />
+            <QRScanner width={456} height={456} completed={this.readQR.bind(this)}/>
           </div>
-        </Camera>
-        <img
-          style={style.captureImage}
-          ref={(img) => {
-            this.img = img;
-          }}
-        />
-      </div>
+          <div>
+             {this.state.displayQrData}
+          </div>
+          <div>
+             ID: {this.state.redirectId}
+          </div>
+
           <a
             className="App-link"
             href="https://www.stgpresents.org/"
