@@ -25,7 +25,10 @@ class App extends React.Component<{}, {}> {
 
   render() {
     return (
+      <div className="row">
+      <div className="col-lg-8 col-xs-12 col-centered">
       <div className="App">
+        
         <header className="App-header">
          
           <p>
@@ -58,6 +61,8 @@ class App extends React.Component<{}, {}> {
             STG
           </a>
         </header>
+      </div>
+      </div>
       </div>
     );
   }
