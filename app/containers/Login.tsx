@@ -16,6 +16,8 @@ interface State {
   password: string;
 }
 
+// To use the mobx stores, you have to inject them into the component. It injects it as a prop to
+// the component.
 @inject('store')
 @observer
 export default class Login extends React.Component<Props, State> {
@@ -37,11 +39,11 @@ export default class Login extends React.Component<Props, State> {
     newState[event.target.id] = event.target.value;
 
     this.setState(newState);
-    
   }
 
   handleSubmit = event => {
     event.preventDefault();
+    // This is how you redirect to a new URL using the mobx-router router store.
     this.props.store.router.goTo(routes.home);
   }
 
