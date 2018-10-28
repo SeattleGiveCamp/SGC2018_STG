@@ -1,0 +1,12 @@
+As is, the API calls will follow the format url:port/route
+The port will default to 5002
+The app will be on the localhost. To allow other computers to access it, download and install ngrok, run it, and use
+ngrokurl:port/route
+All get requests can be run in a browser to easily view the output
+
+/getTask/<taskID> Get the information for a task with an ID taskID
+/points/<personID> Get the user profile for the user with ID personID
+/getTasks Get a list of all the tasks in the table Tasks
+/getMissions Get a list of all the missions in the table Missions
+/add/<personID>/<taskID> (PUT) Mark the task with ID taskID as complete for the user with ID personID
+/getTasks/<missionID> Get a list of all the missions with associated with the mission with ID missionID

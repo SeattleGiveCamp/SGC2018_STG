@@ -9,7 +9,7 @@ Install the following tools to run the server and web app.
 * Python 3
 * Node.js
 
-Install python dependencies
+Install python dependencies.
 
 ```
 python3 -m pip install Flask Flask-Cors Flask-Jsonpify Flask-RESTful Flask-SQLAlchemy Jinja2 SQLAlchemy Click jsonify certifi idna pytz idna six
@@ -23,7 +23,7 @@ npm install
 
 ## Running the server
 
-In the server folder, start the API:
+In the server folder, start the API. If you need more help running the API server, reference the `.txt` files in the `server` folder.
 
 ```
 python RESTful_API_prototype.py
@@ -54,3 +54,4 @@ This will compile the app for production and place it in the `dist` folder. This
 * This is built as a single page application. It can be hosted on something that can host single page apps. It is just an HTML and a JS file so something needs to exist to serve those two files.
 * The login page is a fake page that needs to be hooked into a user authentication system.
 * The concept of an authenticated user also needs to be added to the app. Right now it does not have a concept of a user. For this you could add a mobx user store or an account store that handles the user state and API calls.
+* Reference the `.txt` files in the `server` folder for more instructions and information on the API server.
