@@ -1,14 +1,20 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import QRScanner from '../components/QRScanner';
+import { Link, RouterStore } from 'mobx-router';
+import routes from '../routes';
 
 interface State {
   displayQrData: string;
   redirectId: string;
 }
+interface Props {
+	store?: RouterStore;
+}
 
+@inject('store')
 @observer
-class App extends React.Component<{}, State> {
+class App extends React.Component<Props, State> {
 
     private camera;
     private img;
@@ -38,9 +44,16 @@ class App extends React.Component<{}, State> {
           {
             var justTheID = retrievedQrData.substring(indexOfID + 3);
             this.setState({ redirectId: justTheID});
+            if(justTheID != null){
+              this.props.store.router.goTo(routes.pointpage,{id:justTheID});
+            }
           }
+         //this.props.store.router.goTo(routes.pointpage,{id:'abc'});
+          
         }
       }
+    
+
   }
 
 
