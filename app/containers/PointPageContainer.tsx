@@ -2,7 +2,11 @@ import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { RouterStore } from 'mobx-router';
 import YouTube from 'react-youtube';
-import { Button } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
+
+
+
+
 
 import routes from '../routes';
 import DataStore from '../stores/DataStore';
@@ -54,14 +58,39 @@ class PointPageContainer extends React.Component<Props, State> {
 			});
 	}
 
+	
 	renderPoints(points: number) {
 		if (this.state.showPoints) {
 			return (
-				<h4>You earned {points} points!</h4>
+				<div style={{backgroundColor:'#D5E0B0', width:'100%', minHeight:'100%'}}>
+				
+				<h5 style={{color:'#0C2325'}}>You earned {points} points!</h5>
+				<p>
+					<Button
+						bsStyle="primary"
+						onClick={this.onBackClick}
+					>
+						Back to Home
+					</Button>
+				</p>
+				</div>
+				
 			);
 		} else if (this.state.alreadyDone) {
 			return (
-				<h4>You already completed this task.</h4>
+				
+				<div style={{backgroundColor:'#D5E0B0', width:'100%', minHeight:'100%'}}>
+				
+				<h5 style={{color:'#0C2325'}}>You already completed this task.</h5>
+				<p>
+					<Button
+						bsStyle="primary"
+						onClick={this.onBackClick}
+					>
+						Back to Home
+					</Button>
+				</p>
+				</div>
 			);
 		} else {
 			return <h4>&nbsp;</h4>;
@@ -90,10 +119,11 @@ class PointPageContainer extends React.Component<Props, State> {
 		}
 
 		return (
-			<div style={{ textAlign: 'center' }}>
-				<h1>{mission.MissionName}</h1>
-				<h4>{videoTask.TaskName}</h4>
-				<YouTube
+			<div style={{ textAlign: 'center', backgroundColor:'#0C2325', backgroundSize:'cover', height: '100vh', width:'100vw'}}>
+				
+				<h1 style={{color:'#D5E0B0', paddingTop:'50px'}}>{mission.MissionName}</h1>
+				<h4 style={{color:'#D5E0B0'}}>{videoTask.TaskName}</h4>
+				<YouTube 
 					videoId={videoTask.content_url}
 					opts={{
 						width: '100%',
@@ -104,20 +134,15 @@ class PointPageContainer extends React.Component<Props, State> {
 					}}
 					onEnd={() => this.onVideoEnd(videoTask.TaskID)}
 				/>
-				<p>{videoTask.TaskDescription}</p>
+				<p style={{color:'#D5E0B0'}}>{videoTask.TaskDescription}</p>
 				{this.renderPoints(videoTask.Points)}
 				<br /><br />
-				<p>
-					<Button
-						bsStyle="primary"
-						onClick={this.onBackClick}
-					>
-						Back to Home
-					</Button>
-				</p>
+				
 			</div>
 		);
 	}
 }
+
+
 
 export default PointPageContainer;

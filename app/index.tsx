@@ -42,3 +42,4 @@ if (module.hot) {
 		renderApp(rootEl, NewApp);
 	});
 }
+

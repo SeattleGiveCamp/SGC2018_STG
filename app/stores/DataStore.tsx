@@ -4,7 +4,7 @@ import * as Promise from 'Bluebird';
 
 class DataStore {
 
-	private serverUrl = 'https://edf76ec0.ngrok.io';
+	private serverUrl = 'https://72824b22.ngrok.io';
 
 	@observable
 	missions: any[] = [];

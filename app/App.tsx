@@ -9,7 +9,8 @@ injectGlobal`
 	}
 	
 	body {
-		padding: 16px;
+		height: 100vh;
+		width: 100vw;
 	}
 `;
 
