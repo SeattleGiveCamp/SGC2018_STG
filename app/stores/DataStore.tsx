@@ -20,7 +20,20 @@ class DataStore {
 
 		return axios.get(`${this.serverUrl}/getMissions`)
 			.then(response => {
-				this.setMissions(response.data.missions);
+				const missions = response.data.missions;
+
+				return Promise.all(missions.map(mission => {
+					return axios.get(`${this.serverUrl}/getTasks/${mission.MissionID}`)
+						.then(res => {
+							mission.tasks = res.data.tasks;
+
+							return mission;
+						});
+				}));
+			})
+			.then(missions => {
+				this.setMissions(missions);
+				console.log(missions);
 			})
 			.catch(err => {
 				console.log(err);
