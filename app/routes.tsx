@@ -12,7 +12,7 @@ const routes = {
 
 	home: new Route({
 		path: '/home',
-		component: <HomeContainer />,
+		component: <MapContainer />,
 	}),
 	login: new Route({
 		path: '/',
