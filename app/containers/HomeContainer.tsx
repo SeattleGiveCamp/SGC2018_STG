@@ -35,19 +35,22 @@ class HomeContainer extends React.Component<Props, {}> {
 		const missions = this.props.data.missions;
 
 		const missionMap = missions.map(mission => (
-					<div className="col-sm-4" key={mission.MissionID}>
-						<p key={mission.MissionID}>{mission.MissionName}</p>
-						<img onClick={()=>this.handleContent(mission.MissionID)} width="100%" src={mission.img_url} alt="Image" key={mission.MissionID}/>
+					<div className="col-xs-2" key={mission.MissionID}>
+						
+						<img object-fit="cover" width="100px" height="100px" className="img-responsive" onClick={()=>this.handleContent(mission.MissionID)} src={mission.img_url} alt="Image" key={mission.MissionID}/>
+						<figcaption>{mission.MissionName}</figcaption>
 					</div>
 				))
 		
-		
+			
 		return (
 			<div>
 				<h1>STG Scavenger Hunt Game Goes Here</h1>
+
+				<h3>Total Points: </h3><h3></h3>
 				 
 				<div className="container-fluid bg-3 text-center"> 
-  					<h3>Where To Find Me?</h3>
+  					
   					<div className="row">
     					{missionMap}
   					</div>
