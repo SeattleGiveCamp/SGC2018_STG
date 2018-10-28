@@ -28,7 +28,7 @@ class HomeContainer extends React.Component<Props, {}> {
 
 	componentDidMount() {
 		this.props.data.loadMissions();
-		this.props.data.getUserPoints("audrey");
+		this.props.data.getUserPoints("6");
 	}
 
 

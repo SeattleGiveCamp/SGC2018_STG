@@ -43,7 +43,7 @@ class MapContainer extends React.Component<Props, State> {
 
       componentDidMount() {
 		this.props.data.loadMissions();
-		this.props.data.getUserPoints("audrey");
+		this.props.data.getUserPoints("6");
 	}
 
     
