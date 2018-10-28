@@ -40,8 +40,8 @@ class ContentPageContainer extends React.Component<Props, {}> {
 					height='400px'
 					src={mission.content_url}
 				/>
-				<p>{mission.taksDescr}</p>
-				<p>Reward: {mission.pointValue} points</p>
+				<p>{mission.TaskDescription}</p>
+				<p>Reward: {mission.Points} points</p>
 				<p>
 					<Button
 						bsStyle="primary"
