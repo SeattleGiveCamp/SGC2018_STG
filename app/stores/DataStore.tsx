@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
+import * as Promise from 'Bluebird';
 
 class DataStore {
 
@@ -26,9 +27,17 @@ class DataStore {
 	public loadMissionById(id: string) {
 		this.setCurrentMission(null);
 
-		return axios.get(`${this.serverUrl}/getMission/${id}`)
+		return Promise.all([
+			axios.get(`${this.serverUrl}/getMission/${id}`),
+			axios.get(`${this.serverUrl}/getTasks/${id}`),
+		])
 			.then(response => {
-				this.setCurrentMission(response.data);
+				const mission = response[0].data;
+				const tasks = response[1].data.tasks;
+
+				mission.tasks = tasks;
+
+				this.setCurrentMission(mission);
 			})
 			.catch(err => {
 				console.log(err);

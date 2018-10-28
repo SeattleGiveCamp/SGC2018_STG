@@ -32,15 +32,19 @@ class ContentPageContainer extends React.Component<Props, {}> {
 			);
 		}
 
+		const textTask = mission.tasks.find(task => task.ContentType === 'txt');
+
 		return (
 			<div style={{ textAlign: 'center' }}>
 				<h1>{mission.MissionName}</h1>
+				<p>Total Points: {mission.TotalPoints}</p>
 				<img
 					width='100%'
 					src={mission.img_url}
 				/>
-				<p>{mission.TaskDescription}</p>
-				<p>Total Points: {mission.TotalPoints}</p>
+				<p>{textTask.content_url}</p>
+				<h4>{textTask.TaskName}</h4>
+				<p>{textTask.TaskDescription}</p>
 				<p>
 					<Button
 						bsStyle="primary"
