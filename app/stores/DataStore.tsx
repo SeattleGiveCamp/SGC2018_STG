@@ -26,7 +26,7 @@ class DataStore {
 	public loadMissionById(id: string) {
 		this.setCurrentMission(null);
 
-		return axios.get(`${this.serverUrl}/getContent/${id}`)
+		return axios.get(`${this.serverUrl}/getTask/${id}`)
 			.then(response => {
 				this.setCurrentMission(response.data);
 			})

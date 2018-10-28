@@ -46,7 +46,9 @@ class ContentPageContainer extends React.Component<Props, {}> {
 					<Button
 						bsStyle="primary"
 						onClick={this.onScanClick}
-					/>
+					>
+						Scan QR Code
+					</Button>
 				</p>
 			</div>
 		);
