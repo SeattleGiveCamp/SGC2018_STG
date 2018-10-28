@@ -9,8 +9,6 @@ import CameraContainer from './containers/CameraContainer';
 import ContentPageContainer from './containers/ContentPageContainer';
 import MapContainer from './containers/MapContainer';
 
-// These are the URL routes for the web app. To add a new page you need to add a new route in here that matches the other routes.
-// This uses mobx-router.
 const routes = {
 	home: new Route({
 		path: '/home',
@@ -40,12 +38,8 @@ const routes = {
 	camera:  new Route({
 		path: '/camera',
 		component: <CameraContainer />,
-	}),
-
-	map:  new Route({
-		path: '/map',
-		component: <MapContainer />,
-	}),
+	})
+	
 };
 
 export default routes;

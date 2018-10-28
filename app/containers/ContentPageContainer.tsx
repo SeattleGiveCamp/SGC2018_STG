@@ -2,6 +2,9 @@ import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { RouterStore } from 'mobx-router';
 import { Button } from 'react-bootstrap';
+import * as hammerMan from '../images/Hammering-Man-Small.jpeg';
+import * as tempCircle from '../images/circle.jpeg';/*QRCircle supposed to be here later*/
+import './Landmark.css';
 
 import routes from '../routes';
 import DataStore from '../stores/DataStore';
@@ -39,6 +42,37 @@ class ContentPageContainer extends React.Component<Props, {}> {
 		const textTask = mission.tasks.find(task => task.ContentType === 'txt') || {};
 
 		return (
+			<div>
+                <div id = 'headline'>
+                    <nav>test</nav>
+                    <h1>MPOP</h1>
+                </div>
+                   
+                <div id ="imgMission">
+                    <a>
+                    <img  src={mission.img_url} alt="Image"/>
+                    </a>
+                </div>
+                <div id = "summaryBox">
+                    <h4>Architectural Expression</h4>
+					<p>{textTask.TaskDescription}</p>
+                </div>
+                <a id = "circleTemp">
+                    <img src = {tempCircle} id = "circleTemp" alt = "Image"/>
+                </a>
+				<svg>						
+					<polygon fill= '#ffffcc' points="0,50 430,0 430,50"/>
+					
+				</svg>
+				
+                
+			</div>
+			/*
+			
+			OLD CODE KEPT IF NEEDED
+			Example code of acessing database for reference
+
+			fill = '#ffffcc'
 			<div style={{ textAlign: 'center' }}>
 				<h1>{mission.MissionName}</h1>
 				<p>Total Points: {mission.TotalPoints}</p>
@@ -64,7 +98,7 @@ class ContentPageContainer extends React.Component<Props, {}> {
 						Back to Home
 					</Button>
 				</p>
-			</div>
+			</div>*/
 		);
 	}
 }
