@@ -12,6 +12,9 @@ class DataStore {
 	@observable
 	currentMission: any;
 
+	@observable
+	points: number;
+
 	public loadMissions() {
 		this.setMissions([]);
 
@@ -44,6 +47,26 @@ class DataStore {
 			});
 	}
 
+	public addPoints(userId: number, taskId: string) {
+		return axios.put(`${this.serverUrl}/add/${userId}/${taskId}`)
+			.then(response => {
+				return response.data.descr;
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}
+
+	public getUserPoints(username: string) {
+		return axios.get(`${this.serverUrl}/points/${username}`)
+			.then(response => {
+				this.setPoints(response.data.points);
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	}
+
 	@action
 	private setCurrentMission(mission) {
 		this.currentMission = mission;
@@ -52,6 +75,11 @@ class DataStore {
 	@action
 	private setMissions(missions) {
 		this.missions = missions;
+	}
+
+	@action
+	private setPoints(points) {
+		this.points = points;
 	}
 }
 
