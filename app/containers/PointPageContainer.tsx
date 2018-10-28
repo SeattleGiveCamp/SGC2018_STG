@@ -123,7 +123,7 @@ class PointPageContainer extends React.Component<Props, State> {
 					opts={{
 						width: '100%',
 						playerVars: {
-							controls: 0,
+							controls: 1,
 							modestbranding: 1,
 						},
 					}}
