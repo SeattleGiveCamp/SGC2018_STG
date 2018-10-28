@@ -1,0 +1,30 @@
+Using sqlite db browser to easily view the database in a front end
+
+Notes: Points lack a purpose. Currently rewards are based on completing missions, not on net point accumulation, so points are just a measure of how many total tasks the user has completed with no real world significance
+The API also has no concept of authentication, so anyone is allowed to make any call. I have no idea how to even begin to approach security, so good luck to whoever's job it is to implement it
+
+Missions-Stores all the missions the game is running or has run.
+    MissionName-A human readable identifier for each mission
+    Mission ID-A random string of characters uniquely identifying each mission
+    NumberOfTasks-The number of tasks Associated with this mission
+    TotalPoints-The total number of points completing each task in this mission will award
+    Expiration-The end date of the mission, if it's intended to be run for a limited time. Currently the API does not check for this, to be implemented at a later date
+    img_url-The url of the image to be displayed on the front page associated with this mission
+
+People-A crude prototype of a user Table. Will probably need to be dropped completely and rebuilt from the ground up
+    personID-A unique identifier for each person. Currently sequential numbers, should be a random string of characters.
+    name-Just the first name of the person
+    points-The net number of points the user has has accumulated
+    CompletedTasks-A list of all the id's of the tasks that the user has completed, seperated by spaces
+    CompletedMissions-Same as above but for missions
+
+Tasks-A table listing all of the tasks the users can complete
+    TaskName-A human readable identifier for each task
+    TaskID-A random string of characters uniquely identifying each task
+    Points-The number of points this task is worth
+    ContentType-The type of content associated with this task. Current formats are images(img), text(txt), and youtube videos(vid).
+    content_url-A bad name. Originally intended to be the url of the video or image associated with this task, but has also wound up being just the text for text content
+    TaskDescription-A description of the task, intended to be displayed to the user
+    Location-The location of the task. Currently stored as longitude and latitude coordinates
+    varchar-A mistake that I can't figure out/am to lazy to delete
+    MissionID-The ID for the mission this task is associated with
