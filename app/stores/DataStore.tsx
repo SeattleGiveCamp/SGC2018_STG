@@ -33,7 +33,6 @@ class DataStore {
 			})
 			.then(missions => {
 				this.setMissions(missions);
-				console.log(missions);
 			})
 			.catch(err => {
 				console.log(err);
