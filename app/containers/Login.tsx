@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../style.css";
+import login_img from '../images/login.jpg';
+
 
 interface State{
   email: string;
@@ -40,7 +42,7 @@ export default class Login extends React.Component<{}, State> {
   render() {
     return (
       <div className="Login">
-      <img className="login_img" src="../images/login.jpg"></img>
+      <img src={login_img} />
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
             <ControlLabel>Email</ControlLabel>
