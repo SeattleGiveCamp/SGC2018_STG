@@ -10,6 +10,7 @@ h1 {
   font-family: 'Averia Sans Libre', cursive;
   font-size: 64px;
   line-height: 60px;
+  text-align: center;
 }
 
 
@@ -102,8 +103,7 @@ h1 {
 
 .instructions {
   position: absolute;
-  top: 80%;
-  left: 20%;
+  width: 100%;
   text-align: center;
 }
 
@@ -111,6 +111,19 @@ h1 {
   padding-top: 20px;
 }
 
+.wrap span {
+  text-align: center;
+}
+.qr_reader {
+  height: 100vh;
+  background-color: grey;
+  opacity: 80%;
+}
+
+#error {
+  color: red;
+  text-align: center !important;
+}
 @media all and (min-width: 480px) {
    
     .Login form {

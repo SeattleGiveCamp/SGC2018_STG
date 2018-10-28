@@ -85,10 +85,9 @@ class App extends React.Component<Props, State> {
     const {msg, fading} = this.state;
 
     return (
-      <div className="App">
-        <header className="App-header">
-         
-          <h1>
+      <div className="qr_reader">
+        <header className="App-header">        
+          <h1 className="center">
            STG - Scan your QR Code
           </h1>
           
@@ -101,10 +100,10 @@ class App extends React.Component<Props, State> {
              ID: {this.state.redirectId}
           </div> */}
           
-          {/* AUBREY FIX THIS KTHX  */}
-          <span id="error" color="red" className="errorLabel">{this.state.msg}</span>
        
           <div className="instructions">
+              {/* AUDREY FIX THIS KTHX  */}
+              <span id="error" className="errorLabel">{this.state.msg}</span>
               <div>Locate nearby STG poster</div>
               <div>Place inside the QR code inside area</div>
           </div>
