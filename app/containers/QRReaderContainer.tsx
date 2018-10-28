@@ -102,7 +102,6 @@ class App extends React.Component<Props, State> {
           
        
           <div className="instructions">
-              {/* AUDREY FIX THIS KTHX  */}
               <span id="error" className="errorLabel">{this.state.msg}</span>
               <div>Locate nearby STG poster</div>
               <div>Place inside the QR code inside area</div>
