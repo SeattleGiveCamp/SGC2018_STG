@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import { RouterStore } from 'mobx-router';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import DataStore from '../stores/DataStore';
 
 const AnyReactComponent = ({ text }) => (

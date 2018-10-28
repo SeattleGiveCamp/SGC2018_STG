@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Averia+Sans+Libre|Raleway');
 
-html {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   background-color:#D5E0B0;
-  font-family: 'Raleway', sans-serif;
+   font-family: 'Raleway', sans-serif;
+
 }
 
 h1 {
@@ -37,10 +33,6 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-.title {
-  font-size: 
-}
-
 .sub-title {
   color: white;
   margin-top: 10%;
@@ -49,7 +41,7 @@ h1 {
 }
 
 .login_img {
-  
+
   height: 100%;
   width: 100%;
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
@@ -100,6 +92,25 @@ h1 {
   padding: 1rem;
   color: #104759;;
 }
+
+.wrap {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.instructions {
+  position: absolute;
+  top: 80%;
+  left: 20%;
+  text-align: center;
+}
+
+.instructions div {
+  padding-top: 20px;
+}
+
 @media all and (min-width: 480px) {
    
     .Login form {
@@ -107,9 +118,20 @@ h1 {
       max-width: 320px;
     }
 
-    /* .splash { */
-      /* width: 60vw; */
-      /* margin: auto; */
-      /* margin-bottom: 1rem; */
-    /* } */
+  }
+
+@media (max-width: 480px) {
+
+  body {
+    background-color: white !important;
+  }
+   
+    .wrap {
+      position: absolute;
+      margin: 0 auto;
+      top: 50%;
+      left: 50%;
+     
+    }
+
   }

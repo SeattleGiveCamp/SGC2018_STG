@@ -91,28 +91,28 @@ class App extends React.Component<Props, State> {
           <h1>
            STG - Scan your QR Code
           </h1>
-          <div>
-            <QRScanner width={456} height={456} completed={this.readQR.bind(this)}/>
-          </div>
-          <div>
+          
+          <div className="wrap">
+            <QRScanner width={300} height={300} completed={this.readQR.bind(this)}/>
+          {/* <div>
              {this.state.displayQrData}
           </div>
           <div>
              ID: {this.state.redirectId}
-          </div>
+          </div> */}
           
           {/* AUBREY FIX THIS KTHX  */}
           <span id="error" color="red" className="errorLabel">{this.state.msg}</span>
-          <a
-            className="App-link"
-            href="https://www.stgpresents.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            STG
-          </a>
-        </header>
-      </div>
+       
+          <div className="instructions">
+              <div>Locate nearby STG poster</div>
+              <div>Place inside the QR code inside area</div>
+          </div>
+
+        </div>
+      </header>
+     </div>
+     
     );
   }
 
