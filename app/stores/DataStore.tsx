@@ -14,9 +14,9 @@ class DataStore {
 	public loadMissions() {
 		this.setMissions([]);
 
-		return axios.get(`${this.serverUrl}/getTasks`)
+		return axios.get(`${this.serverUrl}/getMissions`)
 			.then(response => {
-				this.setMissions(response.data.tasks);
+				this.setMissions(response.data.missions);
 			})
 			.catch(err => {
 				console.log(err);
@@ -26,7 +26,7 @@ class DataStore {
 	public loadMissionById(id: string) {
 		this.setCurrentMission(null);
 
-		return axios.get(`${this.serverUrl}/getTask/${id}`)
+		return axios.get(`${this.serverUrl}/getMission/${id}`)
 			.then(response => {
 				this.setCurrentMission(response.data);
 			})

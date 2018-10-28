@@ -34,14 +34,13 @@ class ContentPageContainer extends React.Component<Props, {}> {
 
 		return (
 			<div style={{ textAlign: 'center' }}>
-				<h1>{mission.TaskName}</h1>
-				<iframe
+				<h1>{mission.MissionName}</h1>
+				<img
 					width='100%'
-					height='400px'
-					src={mission.content_url}
+					src={mission.img_url}
 				/>
 				<p>{mission.TaskDescription}</p>
-				<p>Reward: {mission.Points} points</p>
+				<p>Total Points: {mission.TotalPoints}</p>
 				<p>
 					<Button
 						bsStyle="primary"
