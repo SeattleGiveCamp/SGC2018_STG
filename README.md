@@ -55,3 +55,27 @@ This will compile the app for production and place it in the `dist` folder. This
 * The login page is a fake page that needs to be hooked into a user authentication system.
 * The concept of an authenticated user also needs to be added to the app. Right now it does not have a concept of a user. For this you could add a mobx user store or an account store that handles the user state and API calls.
 * Reference the `.txt` files in the `server` folder for more instructions and information on the API server.
+
+## More Next Step Details
+
+* Users and Login
+	- On the login page, type any email and password (it isn't hooked up to anything).
+	- User accounts need to be setup.
+	- Currently hard coded username of a  GiveCamp developer in the content pages, which should be updated to the logged-on user.
+	- Our app has triggers for rewarding points (scanning the correct QR code), but a new API calls needs to be made to add them to the user's account.
+
+* Admin section of site
+	- Currently does not exist. The 3 missions for demo were directly inserted into the database and the content pages created manually.
+	- Goal: Make the Content Pages and QR Codes dynamic and able to have new missions setup by STG staff in an admin page. Our API documentation explains how to store and read this data.
+	- Workflow:
+		* Create a new Mission and give it a title. 
+		* Set the # of Tasks, and assign point values per task.
+		* Since we are using a PWA, they just need to edit the HTML content to be displayed on the content pages. These are currently not dynamically generated but could be.
+		* QR Code can be generated for each step, and a QR image displayed for STG to copy into their other marketing forms for distribution.
+		
+* Rewards
+	- Currently, points just accumulate and are displayed as a total on the Home screen.
+	- Need to be able to see available rewards.
+	- Need to be able to redeem rewards.
+
+![Wireframe diagram of Admin Page](https://github.com/SeattleGiveCamp/SGC2018_STG/blob/master/Documentation/Admin%20Wireframe.png)
